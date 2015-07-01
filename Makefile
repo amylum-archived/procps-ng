@@ -29,7 +29,6 @@ build: submodule
 	cd $(BUILD_DIR) && ./autogen.sh
 	cd $(BUILD_DIR) && CC=musl-gcc ./configure --prefix=$(RELEASE_DIR) --without-ncurses
 	cd $(BUILD_DIR) && make install
-	false ##Fixme
 	cd $(RELEASE_DIR) && tar -czvf $(RELEASE_FILE) *
 
 version:
