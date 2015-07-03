@@ -5,8 +5,9 @@ BUILD_DIR = /tmp/$(PACKAGE)-build
 RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
 PATH_FLAGS = --prefix=$(RELEASE_DIR) --bindir=$(RELEASE_DIR)/usr/bin --sbindir=$(RELEASE_DIR)/usr/bin --datarootdir=$(RELEASE_DIR)/usr/share
+PATH_FLAGS = --prefix=$(RELEASE_DIR)/usr --exec-prefix=$(RELEASE_DIR)/ --libdir=$(RELEASE_DIR)/usr/lib --bindir=$(RELEASE_DIR)/usr/bin --sbindir=$(RELEASE_DIR)/usr/bin
 
-PACKAGE_VERSION = $$(awk '/^VERSION/ { print $$3 }' $(BUILD_DIR)/src/Makefile)
+PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe | sed 's/v//')
 PATCH_VERSION = $$(cat version)
 VERSION = $(PACKAGE_VERSION)-$(PATCH_VERSION)
 
@@ -26,6 +27,7 @@ container:
 build: submodule
 	rm -rf $(BUILD_DIR)
 	cp -R upstream $(BUILD_DIR)
+	echo $(PACKAGE_VERSION) > $(BUILD_DIR)/.version
 	cd $(BUILD_DIR) && ./autogen.sh
 	cd $(BUILD_DIR) && CC=musl-gcc ./configure --prefix=$(RELEASE_DIR) --without-ncurses
 	cd $(BUILD_DIR) && make install
