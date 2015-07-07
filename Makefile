@@ -4,7 +4,7 @@ ORG = amylum
 BUILD_DIR = /tmp/$(PACKAGE)-build
 RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
-PATH_FLAGS = --prefix=$(RELEASE_DIR) --exec-prefix=$(RELEASE_DIR)/ --libdir=$(RELEASE_DIR)/usr/lib --bindir=$(RELEASE_DIR)/usr/bin --sbindir=$(RELEASE_DIR)/usr/bin
+PATH_FLAGS = --prefix=$(RELEASE_DIR)/usr --sbindir=$(RELEASE_DIR)/usr/bin
 
 PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe | sed 's/v//')
 PATCH_VERSION = $$(cat version)
@@ -28,7 +28,7 @@ build: submodule
 	cp -R upstream $(BUILD_DIR)
 	echo $(PACKAGE_VERSION) > $(BUILD_DIR)/.version
 	cd $(BUILD_DIR) && ./autogen.sh
-	cd $(BUILD_DIR) && CC=musl-gcc ./configure --without-ncurses $(PATH_FLAGS)
+	cd $(BUILD_DIR) && CC=musl-gcc ./configure --without-ncurses --disable-rpath $(PATH_FLAGS)
 	cd $(BUILD_DIR) && make install
 	cd $(RELEASE_DIR) && tar -czvf $(RELEASE_FILE) *
 
