@@ -4,7 +4,7 @@ ORG = amylum
 BUILD_DIR = /tmp/$(PACKAGE)-build
 RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
-PATH_FLAGS = --prefix=$(RELEASE_DIR)/usr --sbindir=$(RELEASE_DIR)/usr/bin
+PATH_FLAGS = --prefix=$(RELEASE_DIR) --sbindir=$(RELEASE_DIR)/usr/bin --bindir=$(RELEASE_DIR)/usr/bin --mandir=$(RELEASE_DIR)/usr/share/man
 
 PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe | sed 's/v//')
 PATCH_VERSION = $$(cat version)
