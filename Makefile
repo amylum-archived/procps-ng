@@ -29,7 +29,7 @@ build: submodule
 	cp -R upstream $(BUILD_DIR)
 	echo $(PACKAGE_VERSION) > $(BUILD_DIR)/.version
 	cd $(BUILD_DIR) && ./autogen.sh
-	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS)' ./configure --without-ncurses $(PATH_FLAGS)
+	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS)' ./configure --without-ncurses --without-kill $(PATH_FLAGS)
 	cd $(BUILD_DIR) && make install
 	cd $(RELEASE_DIR) && tar -czvf $(RELEASE_FILE) *
 
