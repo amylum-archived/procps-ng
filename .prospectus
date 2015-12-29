@@ -3,7 +3,7 @@ item do
     url_xpath
     url 'https://gitlab.com/procps-ng/procps/tags'
     xpath '/html/body/div[1]/div[2]/div[2]/div/div/div[2]/ul/li[1]/div[1]/a/strong/text()'
-    regex /\A\n\nv([\d.]+)$/
+    regex /v([\d.]+)$/
   end
 
   actual do
