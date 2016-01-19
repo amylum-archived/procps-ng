@@ -2,7 +2,7 @@ item do
   expected do
     url_xpath
     url 'https://gitlab.com/procps-ng/procps/tags'
-    xpath '//ul[@class="content-list"]/li[1]/div[1]/a/strong/text()'
+    xpath '/html/body/div[1]/div[2]/div[2]/div/div/div[2]/ul/li[1]/div[1]/a/strong/text()'
     regex /v([\d.]+)$/
   end
 
