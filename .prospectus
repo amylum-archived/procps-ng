@@ -1,8 +1,7 @@
 item do
   expected do
-    url_xpath
-    url 'https://gitlab.com/procps-ng/procps/tags'
-    xpath '/html/body/div[1]/div[2]/div[2]/div/div/div[2]/ul/li[1]/div[1]/a/strong/text()'
+    gitlab_tag
+    repo 'procps-ng/procps'
     regex /v([\d.]+)$/
   end
 
