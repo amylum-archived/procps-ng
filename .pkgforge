@@ -1,0 +1,25 @@
+name 'procps-ng'
+org 'amylum'
+
+licenses 'COPYING'
+
+configure_flags(
+  prefix: '/usr',
+  sbindir: '/usr/bin',
+  'without-ncurses': nil,
+  'disable-kill': nil
+)
+
+harden
+
+build do
+  File.open('.version', 'w') { |fh| fh << `git describe`.rstrip.sub(/^v/, '') }
+  run './autogen.sh'
+  configure
+  make
+  install
+end
+
+test do
+  # TODO: add tests
+end

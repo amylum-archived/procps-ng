@@ -1,6 +1,8 @@
 procps-ng
 ==========
 
+[![Build Status](https://img.shields.io/circleci/project/amylum/procps-ng/master.svg)](https://circleci.com/gh/amylum/procps-ng)
+[![GitHub release](https://img.shields.io/github/release/amylum/procps-ng.svg)](https://github.com/amylum/procps-ng/releases)
 [![GPL Licensed](http://img.shields.io/badge/license-GPL2+-green.svg)](https://tldrlegal.com/license/gnu-general-public-license-v2)
 
 Package repo for [procps-ng](http://sourceforge.net/projects/procps-ng/)
