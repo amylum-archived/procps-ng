@@ -8,7 +8,8 @@ item do
   expected do
     gitlab_tag
     repo 'procps-ng/procps'
-    regex /v([\d.]+)$/
+    regex /^v([\d.]+)$/
+    filter /^v([\d.]+)$/
   end
 
   actual do
