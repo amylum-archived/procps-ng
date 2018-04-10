@@ -12,9 +12,6 @@ configure_flags(
 
 harden
 
-patch 'musl-cdefs.patch'
-patch 'musl-libio.patch'
-
 build do
   run "git describe | sed 's/^v//' > .version"
   run './autogen.sh'
